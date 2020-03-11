@@ -8,9 +8,6 @@ class TesteController extends Controller
 {
     public function index()
     {
-        $teste = [
-            '1' => 2
-        ];
-        dd($teste);
+        return view('Clients/index');
     }
 }
