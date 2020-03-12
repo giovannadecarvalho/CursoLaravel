@@ -4,27 +4,33 @@
 
 @endpush
 @section('conteudo')
-    <form action=''>
-        <div>
-            <div>
-                <label>Nome:</label><input type="text">
-            </div>
-        <br>
-            <div>
-                <label>CPF: </label><input id='cpf' name='cpf' type="text" class='cpf-mask'>
-            </div>
-        <br>
-            <div>
-                <label>Endereço: </label><input type="text">
-            </div>
-        </div>
-        <br>
-        <div>
-            <input type='Submit' class='btn-primary'></button>
-        </div>
-    </form>
-
-   @endsection
+<a href class="btn btn-success">Adicionar</a>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nome</th>
+        <th scope="col">CPF</th>
+        <th scope="col">E-mail</th>
+        <th scope="col">Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+        @foreach($clients as $client)
+        <tr>
+            <th scope="row">{{ $client->id }}</th>
+            <td>{{ $client->name }}</td>
+            <td>{{ $client->cpf }}</td>
+            <td>{{ $client->email }}</td>
+            <td>
+                <a href class='btn btn-primary btn-sm'>Editar</a>
+                <a href class='btn btn-danger btn-sm'>Excluir</a></td>
+            </td>
+        </tr>
+      @endforeach
+    </tbody>
+  </table>
+@endsection
    @push('scripts')
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
