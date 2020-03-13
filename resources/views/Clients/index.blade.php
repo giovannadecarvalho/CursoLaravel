@@ -3,8 +3,12 @@
 @push('css')
 
 @endpush
+@if (Session::has('success'))
+      toastr["success"]("<b>SUCESSO: </b><br>
+      {{ Session::get('success') }});
+@endif
 @section('conteudo')
-<a href class="btn btn-success">Adicionar</a>
+<a href="{{ route('client.create') }}" class="btn btn-success">Adicionar</a>
   <table class="table table-striped">
     <thead>
       <tr>
