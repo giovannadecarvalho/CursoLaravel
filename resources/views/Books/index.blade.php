@@ -8,30 +8,30 @@
       {{ Session::get('success') }});
 @endif
 @section('conteudo')
-<a href="{{ route('client.create') }}" class="btn btn-success">Adicionar</a><br><br>
+<a href="{{ route('book.create') }}" class="btn btn-success">Adicionar</a><br><br>
   <table class="table table-striped">
     <thead>
       <tr>
         <th scope="col">#</th>
         <th scope="col">Nome</th>
-        <th scope="col">CPF</th>
-        <th scope="col">E-mail</th>
+        <th scope="col">Escritor</th>
+        <th scope="col">Número de páginas</th>
         <th scope="col">Ações</th>
       </tr>
     </thead>
     <tbody>
-        @foreach($clients as $client)
+        @foreach($books as $book)
         <tr>
-            <th scope="row">{{ $client->id }}</th>
-            <td>{{ $client->name }}</td>
-            <td>{{ $client->cpf }}</td>
-            <td>{{ $client->email }}</td>
+            <th scope="row">{{ $book->id }}</th>
+            <td>{{ $book->name }}</td>
+            <td>{{ $book->writer }}</td>
+            <td>{{ $book->page_number }}</td>
             <td>
-            <a href="{{ route('client.edit', [$client->id]) }}" class="btn btn-primary btn-sm text-white">
+            <a href="{{ route('book.edit', [$book->id]) }}" class="btn btn-primary btn-sm text-white">
               <i class="fal fa-pencil"></i>
               <span class='d-done d-md-inline'>Editar</span>
             </a>
-                <span data-url="{{ route('client.destroy', [$client->id]) }}" data-idClient='{{ $client->id }}' class="btn btn-danger btn-sm text-white deleteButton">
+                <span data-url="{{ route('book.destroy', [$book->id]) }}" data-idBook='{{ $book->id }}' class="btn btn-danger btn-sm text-white deleteButton">
                   <i class="fal fa-trash"></i>
                   <span class='d-done d-md-inline'>Excluir</span>
                 </span>
@@ -52,7 +52,7 @@
 
     $('.deleteButton').on('click', function (e) {
         var url = $(this).data('url');
-        var idClient = $(this).data('idClient');
+        var idBook = $(this).data('idbook');
         $.ajaxSetup({
             headers: {'X-CSRF-TOKEN': '{{ csrf_token() }}'},
             method: 'DELETE',
@@ -60,7 +60,7 @@
         });
         $.ajax({
             data: {
-                'idClient': idClient,
+                'idbook': idBook,
             },
             success: function (data) {
                 console.log(data);

@@ -13,31 +13,28 @@
             </ul>
         </div>
     @endif
-    <form method="POST" action="{{ route('client.store') }}" class="form-horizontal form-validate">
+    <form method="POST" action="{{ route('client.update', [$client->id]) }}" class="form-horizontal form-validate">
                         {{ csrf_field() }}
-        {{-- <div class="form-group">
-            <input type="checkbox">
-            <label for="nome">Ativo </label>
-          </div> --}}
+                        @method('PUT')
           <div class="form-group form-check">
-          <input id="active_flag" name="active_flag" type="checkbox" value="{{ old("active_flag") }}" class="form-check-input">
+          <input id="active_flag" name="active_flag" type="checkbox" class="form-check-input" @if($client->active_flag) checkout='checked' @endif>
             <label class="form-check-label">Ativo</label>
         </div>
         <div class="form-group">
           <label for="name">Nome: </label>
-          <input id="name" type="text" value="{{ old("name") }}" required name="name" class="form-control" placeholder="Ex.: Maria">
+          <input id="name" type="text" required name="name" class="form-control" placeholder="Ex.: Maria" value="{{ old("name", $client->name) }}">
         </div>
         <div class="form-group">
           <label for="cpf">CPF:</label>
-          <input id="cpf" type= "text" name="cpf" value="{{ old("cpf") }}" class="form-control cpf-mask" placeholder="Ex.: 000.000.000-00">
+          <input id="cpf" type= "text" name="cpf" class="form-control cpf-mask" placeholder="Ex.: 000.000.000-00" value="{{ old("cpf", $client->cpf) }}" >
         </div>
         <div class="form-group">
             <label for="email">E-mail:</label>
-            <input id="email" type="text" value="{{ old("email") }}" name="email" class="form-control" placeholder="Ex.: teste@teste.com">
+            <input id="email" type="text" name="email" class="form-control" placeholder="Ex.: teste@teste.com" value="{{ old("email", $client->email) }}">
         </div>
         <div class="form-group">
             <label for="endereco">Endereço:</label>
-            <input id="endereco" type="text" name="endereco" class="form-control" placeholder="Ex.: Bairro A, Rua B, 100">
+            <input id="endereco" type="text" name="endereco" class="form-control" placeholder="Ex.: Bairro A, Rua B, 100" value="{{ old("email", $client->email) }}">
         </div>
           <button type="submit" class='btn btn-success'>Enviar</button>
     </form>

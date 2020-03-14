@@ -13,31 +13,23 @@
             </ul>
         </div>
     @endif
-    <form method="POST" action="{{ route('client.store') }}" class="form-horizontal form-validate">
+    <form method="POST" action="{{ route('book.store') }}" class="form-horizontal form-validate">
                         {{ csrf_field() }}
         {{-- <div class="form-group">
             <input type="checkbox">
             <label for="nome">Ativo </label>
           </div> --}}
-          <div class="form-group form-check">
-          <input id="active_flag" name="active_flag" type="checkbox" value="{{ old("active_flag") }}" class="form-check-input">
-            <label class="form-check-label">Ativo</label>
-        </div>
         <div class="form-group">
           <label for="name">Nome: </label>
-          <input id="name" type="text" value="{{ old("name") }}" required name="name" class="form-control" placeholder="Ex.: Maria">
+          <input id="name" type="text" value="{{ old("name") }}" required name="name" class="form-control">
         </div>
         <div class="form-group">
-          <label for="cpf">CPF:</label>
-          <input id="cpf" type= "text" name="cpf" value="{{ old("cpf") }}" class="form-control cpf-mask" placeholder="Ex.: 000.000.000-00">
+          <label for="writer">Escritor:</label>
+          <input id="writer" type= "text" name="writer" value="{{ old("writer") }}" class="form-control">
         </div>
         <div class="form-group">
-            <label for="email">E-mail:</label>
-            <input id="email" type="text" value="{{ old("email") }}" name="email" class="form-control" placeholder="Ex.: teste@teste.com">
-        </div>
-        <div class="form-group">
-            <label for="endereco">Endereço:</label>
-            <input id="endereco" type="text" name="endereco" class="form-control" placeholder="Ex.: Bairro A, Rua B, 100">
+            <label for="page_number">Número de páginas:</label>
+            <input id="page_number" type="text" value="{{ old("page_number") }}" name="page_number" class="form-control">
         </div>
           <button type="submit" class='btn btn-success'>Enviar</button>
     </form>
